@@ -11,7 +11,9 @@ if($conn->connect_error){
     $stmt = $conn->prepare("insert into project_table( firstName, lastName, email, password) values(?, ?, ?, ?)");
     $stmt->bind_param("ssss", $firstName, $lastName, $email, $password);
     $stmt->execute();
-    echo "Registration Successfull";
+    header("Location: login.html ?error=Incorect User name or password");
+
+                exit();
     $stmt->close();
     $conn->close();
 
